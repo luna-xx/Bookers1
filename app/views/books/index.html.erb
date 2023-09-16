@@ -1,3 +1,5 @@
+<div class="book-wrap"></div>
+
 <h1>Books</h1>
 
 <table>
@@ -14,11 +16,9 @@
     <tr>
       <td><%= book.title %></td>
       <td><%= book.body %></td>
-      <td>
-        <%= link_to "show", book_path(book.id) %>
-        <%= link_to "edit", edit_book_path(book.id) %>
-        <%= link_to "destroy", book_path(book), method: :delete, "data-confirm" => "Are you sure?" %>
-      </td>
+      <td><%= link_to "Show", book_path(book.id) %></td>
+      <td><%= link_to "Edit", edit_book_path(book.id) %></td>
+      <td><%= link_to "Destroy", book_path(book), method: :delete, "data-confirm" => "Are you sure?" %></td>
     </tr>
     <% end %>
   </tbody>
@@ -35,18 +35,24 @@
         <% end %>
       </ul>
     </div>
-    
 <% end %>
 
 
 <%= form_with model: @book, url: books_path, method: :post do |f| %>
-  <h5>Title</h5>
-  <%= f.text_field :title %>
 
-  <h5>Body</h5>
-  <%= f.text_area :body %>
+  <div class="field">
+    <h5>Title</h5>
+    <%= f.text_field :title %>
+  </div>
 
-  <%= f.submit 'Create Book' %>
+  <div class="field">
+    <h5>Body</h5>
+    <%= f.text_area :body %>
+  </div>
+
+  <div class="acction">
+    <%= f.submit 'Create Book' %>
+  </div>
 <% end %>
 
 
